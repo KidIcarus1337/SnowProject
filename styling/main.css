@@ -1,0 +1,29 @@
+.navbar {
+    margin-bottom: 0;
+    border-bottom-color: #D5D5D5;
+    border-radius: 0;
+}
+
+.choice_section {
+    height: 550px;
+}
+
+#logo {
+    height: 50px;
+    width: 191px;
+    margin: auto;
+    float: none;
+    padding-top: 10px;
+}
+
+#shovelers {
+    background-image: url("../images/shoveler.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+#commisioners {
+    background-image: url("../images/shoveler2.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
