@@ -4,26 +4,37 @@
     border-radius: 0;
 }
 
-.choice_section {
-    height: 550px;
-}
-
 #logo {
+    display: inline-block;
     height: 50px;
     width: 191px;
-    margin: auto;
-    float: none;
     padding-top: 10px;
+    padding-left: 10px;
 }
 
-#shovelers {
-    background-image: url("../images/shoveler.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+#primary_ad {
+    height: 600px;
+    background-color: black;
 }
 
-#commisioners {
-    background-image: url("../images/shoveler2.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+#shoveler {
+    background-image: url("../images/shoveler5.jpg");
+    height: 100%;
+    width: 1400px;
+    margin: 0 auto;
+}
+
+#fader {
+    position: absolute;
+    height: 600px;
+    width: 1400px;
+    background: linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(0,0,0,0.65) 1%,rgba(0,0,0,0.65) 12%,rgba(0,0,0,0) 40%);
+}
+
+#left_fade {
+    left: 0;
+}
+
+#right_fade {
+    right: 0;
 }
