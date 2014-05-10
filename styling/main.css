@@ -1,7 +1,29 @@
+h1 {
+	font: 50px HOEFLER TEXT, Sans-Serif;
+}
+
+.btn-lg {
+	border-radius: 4px;
+}
+
 .navbar {
     margin-bottom: 0;
     border-bottom-color: #D5D5D5;
     border-radius: 0;
+}
+
+.location_shell {
+	padding: 0 15px 0 15px;
+}
+
+.location {
+	height: 150px;
+	padding-top: 55px;
+	font: 20px Hoefler Text, Sans-Serif;
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+	color: white;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 #logo {
@@ -13,28 +35,37 @@
 }
 
 #primary_ad {
-    height: 600px;
-    background-color: black;
-}
-
-#shoveler {
     background-image: url("../images/shoveler5.jpg");
-    height: 100%;
-    width: 1400px;
+    background-color: black;
+    height: 550px;
     margin: 0 auto;
 }
 
-#fader {
-    position: absolute;
-    height: 600px;
-    width: 1400px;
-    background: linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(0,0,0,0.65) 1%,rgba(0,0,0,0.65) 12%,rgba(0,0,0,0) 40%);
+#overlay {
+	padding-top: 160px;
+	font: 50px Hoefler Text, Sans-Serif;
+	color: black;
+	text-align: center;
+	text-shadow: 0 -1px 1px rgba(255,255,255,0.6);
+	margin: 0 auto;
 }
 
-#left_fade {
-    left: 0;
+#locations {
+	text-align: center;
 }
 
-#right_fade {
-    right: 0;
+#bottom_row {
+	margin-top: 25px;
+}
+
+#appleton {
+	background-image: url("../images/appleton.jpg");
+}
+
+#milwaukee {
+	background-image: url("../images/milwaukee.jpg");
+}
+
+#red_bud {
+	background-image: url("../images/red_bud.jpg");
 }
