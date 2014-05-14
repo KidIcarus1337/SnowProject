@@ -17,13 +17,21 @@ h1 {
 }
 
 .location {
-	height: 150px;
-	padding-top: 55px;
+	height: 170px;
+	padding-top: 75px;
 	font: 20px Hoefler Text, Sans-Serif;
 	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
 	color: white;
 	background-size: cover;
 	background-repeat: no-repeat;
+}
+
+.coming_soon {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
 
 #logo {
@@ -68,4 +76,19 @@ h1 {
 
 #red_bud {
 	background-image: url("../images/red_bud.jpg");
+}
+
+#madison {
+    background-image: url("../images/madison.jpg");
+    opacity: 0.5;
+}
+
+#chicago {
+    background-image: url("../images/chicago.jpg");
+    opacity: 0.5;
+}
+
+#minneapolis {
+    background-image: url("../images/minneapolis.jpg");
+    opacity: 0.5;
 }
