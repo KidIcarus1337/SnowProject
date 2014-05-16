@@ -43,7 +43,7 @@ h1 {
 }
 
 #primary_ad {
-    background-image: url("../images/shoveler5.jpg");
+    background-image: url("../images/primary_ad.jpg");
     background-color: black;
     height: 550px;
     margin: 0 auto;
@@ -59,7 +59,12 @@ h1 {
 }
 
 #locations {
+    margin-top: 20px;
 	text-align: center;
+}
+
+#top_row {
+    margin-top: 20px;
 }
 
 #bottom_row {
@@ -91,4 +96,20 @@ h1 {
 #minneapolis {
     background-image: url("../images/minneapolis.jpg");
     opacity: 0.5;
+}
+
+/*How To*/
+.how_to_option {
+    height: 450px;
+    width: 600px;
+}
+
+#how_to {
+    margin-top: 40px;
+    text-align: center;
+    width: 1400px;
+}
+
+#shoveler {
+    background-image: url("../images/shoveler.jpg");
 }
