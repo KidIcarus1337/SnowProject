@@ -211,7 +211,6 @@
 
 /*----------Customer Reviews----------*/
 .customer_avatar {
-    background-image: url("../images/dean.png");
     background-size: contain;
     height: 100px;
     width: 100px;
@@ -241,11 +240,17 @@
 }
 
 #review_radios {
+    display: table;
     margin: 0 auto;
     margin-top: 30px;
     width: 100px;
 }
 
-input[type="radio"] {
-    background: red;
+#dean_avatar {
+    background-image: url("../images/dean.png");
+}
+
+#review_radios div {
+    display: table-cell;
+    text-align: center;
 }
