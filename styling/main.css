@@ -1,17 +1,44 @@
-h1 {
-	font: 50px HOEFLER TEXT, Sans-Serif;
-}
-
-.btn-lg {
-	border-radius: 4px;
-}
-
+/*----------Navigation Bar----------*/
 .navbar {
     margin-bottom: 0;
     border-bottom-color: #D5D5D5;
     border-radius: 0;
 }
 
+.btn-lg {
+	border-radius: 4px;
+}
+
+#logo {
+    display: inline-block;
+    height: 50px;
+    width: 191px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+/*----------Jumbotron----------*/
+#overlay h1 {
+	font: 50px HOEFLER TEXT, Sans-Serif;
+}
+
+#primary_ad {
+    background-image: url("../images/primary_ad.jpg");
+    background-color: black;
+    height: 550px;
+    margin: 0 auto;
+}
+
+#overlay {
+	padding-top: 160px;
+	font: 50px Hoefler Text, Sans-Serif;
+	color: black;
+	text-align: center;
+	text-shadow: 0 -1px 1px rgba(255,255,255,0.6);
+	margin: 0 auto;
+}
+
+/*----------Locations----------*/
 .location_shell {
 	padding: 0 15px 0 15px;
 }
@@ -34,33 +61,10 @@ h1 {
     margin: 0 auto;
 }
 
-#logo {
-    display: inline-block;
-    height: 50px;
-    width: 191px;
-    padding-top: 10px;
-    padding-left: 10px;
-}
-
-#primary_ad {
-    background-image: url("../images/primary_ad.jpg");
-    background-color: black;
-    height: 550px;
-    margin: 0 auto;
-}
-
-#overlay {
-	padding-top: 160px;
-	font: 50px Hoefler Text, Sans-Serif;
-	color: black;
-	text-align: center;
-	text-shadow: 0 -1px 1px rgba(255,255,255,0.6);
-	margin: 0 auto;
-}
-
 #locations {
     margin-top: 20px;
 	text-align: center;
+	width: 1170px;
 }
 
 #top_row {
@@ -98,18 +102,150 @@ h1 {
     opacity: 0.5;
 }
 
-/*How To*/
-.how_to_option {
+/*---------How To----------*/
+.option_ad {
     height: 450px;
+    width: 600px;
+    padding-top: 190px;
+	color: white;
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+}
+
+.how_to_option {
     width: 600px;
 }
 
-#how_to {
+.option_header {
+    font: 35px Hoefler Text, Sans-Serif;
+}
+
+.option_desc {
+    text-align: left;
+}
+
+.how_to_header_line {
+    width: 500px;
+    margin: 15px 0 15px 0;
+    border-bottom: 3px solid #CFCFCF
+}
+
+#how_to_section {
     margin-top: 40px;
     text-align: center;
     width: 1400px;
 }
 
-#shoveler {
+#how_to_header {
+    margin-bottom: 20px;
+}
+
+#left_hdr_line {
+    float: left;
+}
+
+#right_hdr_line {
+    float: right;
+}
+
+#shoveler_option {
+    float: left;
+}
+
+#shoveler_ad {
     background-image: url("../images/shoveler.jpg");
+}
+
+#poster_option {
+    float: right;
+}
+
+#poster_ad {
+    background-image: url("../images/poster.jpg");
+}
+
+#or {
+    position: relative;
+    top: 210px;
+}
+
+/*----------Video----------*/
+.video_header_line {
+    width: 300px;
+    margin: 15px 0 15px 0;
+    border-bottom: 3px solid #CFCFCF
+}
+
+#video_section {
+    width: 1170px;
+}
+
+#video_header {
+    margin: 60px 0 20px 0;
+    text-align: center;
+}
+
+#left_video_line {
+    float: left;
+    margin-left: 120px;
+}
+
+#right_video_line {
+    float: right;
+    margin-right: 120px;
+}
+
+#video_wrapper {
+    position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 25px;
+	height: 0;
+}
+
+#video_wrapper iframe {
+    position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/*----------Customer Reviews----------*/
+.customer_avatar {
+    background-image: url("../images/dean.png");
+    background-size: contain;
+    height: 100px;
+    width: 100px;
+}
+
+.customer_text {
+    float: right;
+    height: 100px;
+    width: 850px;
+}
+
+.customer_text p {
+    font-style: italic;
+}
+
+.customer_text h5 {
+    margin-bottom: 0;
+}
+
+#reviews_section {
+    margin-top: 100px;
+    width: 1000px;
+}
+
+#stars {
+    margin-bottom: 8px;
+}
+
+#review_radios {
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 100px;
+}
+
+input[type="radio"] {
+    background: red;
 }
