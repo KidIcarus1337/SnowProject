@@ -40,17 +40,28 @@
 
 /*----------Locations----------*/
 .location_shell {
-	padding: 0 15px 0 15px;
+    display: inline-block;
+    position: relative;
+}
+
+.location_shell+.location_shell {
+    margin-left: 25px;
 }
 
 .location {
+    background-size: cover;
+	background-repeat: no-repeat;
 	height: 170px;
+	width: 360px;
 	padding-top: 75px;
 	font: 20px Hoefler Text, Sans-Serif;
 	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
 	color: white;
-	background-size: cover;
-	background-repeat: no-repeat;
+}
+
+.location_row {
+    display: table;
+    margin: 0 auto;
 }
 
 .coming_soon {
@@ -252,5 +263,70 @@
 
 #review_radios div {
     display: table-cell;
+    text-align: center;
+}
+
+/*----------Social Links----------*/
+.social_link {
+    background-size: contain;
+    display: inline-block;
+    height: 45px;
+    width: 45px;
+}
+
+#social_links a+a {
+    margin-left: 20px;
+}
+
+#social_links {
+    display: table;
+    margin: 60px auto 0 auto;
+}
+
+#facebook {
+    background-image: url("../images/facebook.png");
+}
+
+#twitter {
+    background-image: url("../images/twitter.png");
+}
+
+#email {
+    background-image: url("../images/email.png");
+}
+
+/*----------Footer----------*/
+.footer_list li+li {
+    margin-left: 15px;
+}
+
+#footer {
+    margin: 10px auto 40px auto;
+    border-top: 1px solid #E6E6E6;
+}
+
+#top_row {
+    height: 20px;
+    margin-top: 25px;
+}
+
+#left_footer {
+    float: left;
+}
+
+#right_footer {
+    float: right;
+}
+
+#footer_divider {
+    display: block;
+    color: #DBDBDB;
+    margin: 0 auto;
+    padding-top: 3px;
+}
+
+#copyright {
+    margin-top: 20px;
+    color: #DBDBDB;
     text-align: center;
 }
