@@ -241,6 +241,14 @@
     margin-bottom: 0;
 }
 
+.customer_review {
+    overflow: hidden;
+}
+
+.customer_review+.customer_review {
+    display: none;
+}
+
 #reviews_section {
     margin-top: 100px;
     width: 1000px;
@@ -259,6 +267,18 @@
 
 #dean_avatar {
     background-image: url("../images/dean.png");
+}
+
+#kent_avatar {
+    background-image: url("../images/kent.png");
+}
+
+#annie_avatar {
+    background-image: url("../images/annie.png");
+}
+
+#hogarth_avatar {
+    background-image: url("../images/hogarth.png");
 }
 
 #review_radios div {
