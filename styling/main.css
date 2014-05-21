@@ -238,15 +238,33 @@
 }
 
 .customer_text h5 {
-    margin-bottom: 0;
+    margin: 0;
 }
 
-.customer_review {
-    overflow: hidden;
+.carousel-indicators {
+    bottom: -50px;
+    background-color: #FFF;
 }
 
-.customer_review+.customer_review {
-    display: none;
+.carousel-indicators li {
+    border-color: grey;
+    height: 14px;
+    width: 14px;
+    margin: 0;
+}
+
+.carousel-indicators li+li {
+    margin-left: 12px;
+}
+
+.carousel-indicators li+.active {
+    margin-left: 12px;
+}
+
+.carousel-indicators .active {
+    background-color: grey;
+    height: 14px;
+    width: 14px;
 }
 
 #reviews_section {
@@ -256,13 +274,6 @@
 
 #stars {
     margin-bottom: 8px;
-}
-
-#review_radios {
-    display: table;
-    margin: 0 auto;
-    margin-top: 30px;
-    width: 100px;
 }
 
 #dean_avatar {
@@ -281,11 +292,6 @@
     background-image: url("../images/hogarth.png");
 }
 
-#review_radios div {
-    display: table-cell;
-    text-align: center;
-}
-
 /*----------Social Links----------*/
 .social_link {
     background-size: contain;
@@ -300,7 +306,7 @@
 
 #social_links {
     display: table;
-    margin: 60px auto 0 auto;
+    margin: 120px auto 0 auto;
 }
 
 #facebook {
