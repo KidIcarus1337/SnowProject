@@ -18,4 +18,5 @@ $(document).ready(function() {
     });
     $(".social_link").tooltip();
     var sp_db = new Firebase("https://snow-project.firebaseio.com/");
+    
 });
