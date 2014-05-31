@@ -22,33 +22,50 @@
                 <div class="log_section">
                     <h4>Sign Up</h4>
                     <p>Get started as either a shoveler and/or poster!</p>
-                    <form class="log_form">
-                        <input type="email" placeholder="Email Address" />
-                        <input type="text" placeholder="User Name" />
-                        <input type="password" placeholder="Password" />
-                        <input type="password" placeholder="Repeat Password" />
+                    <form class="log_form" id="sign_up_form">
+                        <input type="email" class="pop_target" id="email" name="email" placeholder="Email Address" />
+                        <input type="text" class="pop_target" id="user_name" name="user_name" placeholder="User Name" />
+                        <input type="password" class="pop_target" id="password" name="password" placeholder="Password" />
+                        <input type="password" class="pop_target" id="rp_password" name="rp_password" placeholder="Repeat Password" />
+                        <div id="role_container">
+                            <h5>Role</h5>
+                            <div class="checkbox_container pop_target" id="shoveler_container">
+                                <label for="shoveler_box">
+                                    <input type="checkbox" id="shoveler_box" name="shoveler_box" />
+                                    &nbsp;Shoveler
+                                </label>
+                            </div>
+                            <div class="checkbox_container">
+                                <label for="poster_box">
+                                    <input type="checkbox" id="poster_box" name="poster_box" />
+                                    &nbsp;Poster
+                                </label>
+                            </div>
+                        </div>
                         <div class="checkbox_container">
-                            <label for="newsletter">
-                                <input type="checkbox" id="newsletter" />
-                                Receive our newsletter via email. Keep up to date with any
+                            <label for="newsletter_box">
+                                <input type="checkbox" id="newsletter_box" name="newsletter_box" />
+                                &nbsp;Receive our newsletter via email. Keep up to date with any
                                 exciting news or changes to Snow Project!
                             </label>
                         </div>
                     </form>
+                    <button id="sign_up_button">SUBMIT</button>
                 </div>
                 <div class="log_section">
                     <h4>Log In</h4>
                     <p>Already signed up? Log in and get started!</p>
-                    <form class="log_form">
-                        <input type="text" placeholder="Email or User Name" />
-                        <input type="password" placeholder="Password" />
+                    <form class="log_form" id="log_in_form">
+                        <input type="text" class="pop_target" id="log_id" name="log_id" placeholder="Email or User Name" />
+                        <input type="password" class="pop_target" id="log_password" name="log_password" placeholder="Password" />
                         <div class="checkbox_container">
-                            <label for="remember_me">
-                                Remember Me&nbsp;
-                                <input type="checkbox" id="remember_me" />
+                            <label for="remember_me_box">
+                                <input type="checkbox" id="remember_me_box" name="remember_me_box" />
+                                &nbsp;Remember Me
                             </label>
                         </div>
                     </form>
+                    <button id="log_in_button">LOG IN</button>
                 </div>
             </div>
         </div>

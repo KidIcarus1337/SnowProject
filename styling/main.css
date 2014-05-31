@@ -341,21 +341,21 @@ input[type="checkbox"] {
     margin: 120px auto 0 auto;
 }
 
-#facebook {
+#facebook_link {
     background-image: url("../images/facebook.png");
 }
 
-#twitter {
+#twitter_link {
     background-image: url("../images/twitter.png");
 }
 
-#email {
+#email_link {
     background-image: url("../images/email.png");
 }
 
 /*----------Log In----------*/
 .log_section {
-    height: 370px;
+    height: 410px;
 }
 
 .log_section:first-child {
@@ -364,6 +364,15 @@ input[type="checkbox"] {
     margin-right: 20px;
     padding-right: 20px;
     border-right: 1px solid #737373;
+}
+
+.log_section button {
+    height: 40px;
+    width: 100%;
+    margin-top: 15px;
+    background-color: #FFF;
+    border: 1px solid #00E6E6;
+    color: #00E6E6;
 }
 
 .log_section:last-child {
@@ -397,11 +406,20 @@ input[type="checkbox"] {
     margin-top: 10px;
 }
 
+.popover {
+    border-color: red;
+    color: red;
+}
+
+.arrow {
+    border-left-color: red !important;
+    border-right-color: red !important;
+}
 
 #log_in {
     background-color: #F1F1F1;
     width: 800px;
-    height: 450px;
+    height: 490px;
     -webkit-box-shadow: rgba(0, 0, 0, 0.247059) 0px 1px 2px 0px;
 }
 
@@ -411,6 +429,21 @@ input[type="checkbox"] {
 
 #float_container {
     margin-top: 15px;
+}
+
+#role_container h5 {
+    height: 20px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #00E6E6;
+    font-weight: 600;
+}
+
+#role_container > div {
+    margin-top: 5px;
+}
+
+#role_container > div+div {
+    margin-left: 5px;
 }
 
 /*----------Footer----------*/
