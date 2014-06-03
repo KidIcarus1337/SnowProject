@@ -12,6 +12,17 @@ input[type="checkbox"] {
     width: 14px;
 }
 
+.popover {
+    border-color: red;
+    color: red;
+    max-width: 350px;
+}
+
+.arrow {
+    border-left-color: red !important;
+    border-right-color: red !important;
+}
+
 /*----------Navigation Bar----------*/
 .navbar {
     margin-bottom: 0;
@@ -50,6 +61,17 @@ input[type="checkbox"] {
 	text-align: center;
 	text-shadow: 0 -1px 1px rgba(255,255,255,0.6);
 	margin: 0 auto;
+}
+
+#overlay_button {
+    display: inline-block;
+    height: 45px;
+    width: 220px;
+    margin: 0 auto;
+    background-color: #FFF;
+    border: 1px solid #00E6E6;
+    color: #00E6E6;
+    font-size: 16px;
 }
 
 /*----------Locations----------*/
@@ -404,16 +426,6 @@ input[type="checkbox"] {
 
 .checkbox_container {
     margin-top: 10px;
-}
-
-.popover {
-    border-color: red;
-    color: red;
-}
-
-.arrow {
-    border-left-color: red !important;
-    border-right-color: red !important;
 }
 
 #log_in {
