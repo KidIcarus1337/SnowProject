@@ -1,5 +1,5 @@
 * {
-    font-family: "museo-sans";
+    font-family: "museo-sans", Sans-Serif;
 }
 
 label {
@@ -23,7 +23,7 @@ input[type="checkbox"] {
     border-right-color: red !important;
 }
 
-/*----------Navigation Bar----------*/
+/*--------------------Navigation Bar--------------------*/
 .navbar {
     margin-bottom: 0;
     border-bottom-color: #D5D5D5;
@@ -42,7 +42,7 @@ input[type="checkbox"] {
     padding-left: 10px;
 }
 
-/*----------Jumbotron----------*/
+/*--------------------Jumbotron--------------------*/
 #overlay h1 {
 	font: 50px HOEFLER TEXT, Sans-Serif;
 }
@@ -72,9 +72,15 @@ input[type="checkbox"] {
     border: 1px solid #00E6E6;
     color: #00E6E6;
     font-size: 16px;
+    text-decoration: none;
 }
 
-/*----------Locations----------*/
+#overlay_button span {
+    display: inline-block;
+    padding: 12px 0;
+}
+
+/*--------------------Locations--------------------*/
 .location_shell {
     display: inline-block;
     position: relative;
@@ -153,7 +159,7 @@ input[type="checkbox"] {
     opacity: 0.5;
 }
 
-/*---------How To----------*/
+/*--------------------How To--------------------*/
 .option_ad {
     height: 450px;
     width: 600px;
@@ -227,7 +233,7 @@ input[type="checkbox"] {
     top: 210px;
 }
 
-/*----------Video----------*/
+/*--------------------Video--------------------*/
 .video_header_line {
     width: 300px;
     margin: 15px 0 15px 0;
@@ -272,7 +278,7 @@ input[type="checkbox"] {
 	height: 100%;
 }
 
-/*----------Customer Reviews----------*/
+/*--------------------Customer Reviews--------------------*/
 .customer_avatar {
     background-size: contain;
     height: 100px;
@@ -346,7 +352,7 @@ input[type="checkbox"] {
     background-image: url("../images/hogarth.png");
 }
 
-/*----------Social Links----------*/
+/*--------------------Social Links--------------------*/
 .social_link {
     background-size: contain;
     display: inline-block;
@@ -375,7 +381,7 @@ input[type="checkbox"] {
     background-image: url("../images/email.png");
 }
 
-/*----------Log In----------*/
+/*--------------------Log In--------------------*/
 .log_section {
     height: 410px;
 }
@@ -458,7 +464,16 @@ input[type="checkbox"] {
     margin-left: 5px;
 }
 
-/*----------Footer----------*/
+/*--------------------Profile--------------------*/
+#profile_container {
+    width: 1200px;
+    height: 500px;
+    background-color: #B2B2B2;
+    border-left: 1px solid #00E6E6;
+    border-right: 1px solid #00E6E6;
+}
+
+/*--------------------Footer--------------------*/
 .footer_list li+li {
     margin-left: 15px;
 }

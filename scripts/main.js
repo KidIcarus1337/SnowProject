@@ -12,7 +12,7 @@ $(document).ready(function() {
             } else {
                 $(pop_target).css("left",parseInt($(pop_target).css("left")) + 5 + "px");
             }
-        })
+        });
         errors.push(element_target);
     }
     
@@ -28,13 +28,13 @@ $(document).ready(function() {
         $(".checkbox_container").prop("disabled", false);
     }
     
+    $(".carousel").carousel({
+        interval: 10000
+    });
+    
+    $(".carousel").carousel('pause');
+    
     $(".carousel").on("slide.bs.carousel", function() {
-        $(".carousel").carousel('pause');
-        setTimeout(function() {
-            $(".carousel").carousel({
-                interval: 5000
-            });
-        }, 10000);
         setTimeout(function() {
             var next_index = $(".prev").index();
             var current_index = $(".active").index();
@@ -64,7 +64,11 @@ $(document).ready(function() {
         $("#shoveler_container").popover("destroy");
     });
     
-    var sp_fb = new Firebase("https://snow-project.firebaseio.com/accounts/")
+    var sp_fb_accounts = new Firebase("https://snow-project.firebaseio.com/accounts/");
+    var FirebaseTokenGenerator = require("firebase-token-generator");
+    var tokenGenerator = new FirebaseTokenGenerator("9JCywOK5CIZaidL7pb1QjpHPMtTcnudG0NSYqdCD");
+    var token = tokenGenerator.createToken({we: "will", rock: "you"});
+    var sp_fb_data = new Firebase("https://snow-project.firebaseio.com/");
     
     $("#sign_up_button").click(function() {
         disable_elements();
@@ -100,12 +104,12 @@ $(document).ready(function() {
         if (shoveler === false && poster === false) {
             pop_set("#shoveler_container", ".popover:contains(role)", "Please choose at least one role.", "left", errors);
         }
-        sp_fb.once("value", function(dataSnapshot) {
+        sp_fb_accounts.once("value", function(dataSnapshot) {
             dataSnapshot.forEach(function(childSnapshot) {
-                if (email === childSnapshot.child("email").val()) {
+                if (email.toLowerCase() === (childSnapshot.child("email").val()).toLowerCase()) {
                     pop_set("#email", ".popover:contains(That email)", "That email address has already been registered.", "left", errors);
                 }
-                if (user_name === childSnapshot.child("user_name").val()) {
+                if (user_name.toLowerCase() === (childSnapshot.child("user_name").val()).toLowerCase()) {
                     pop_set("#user_name", ".popover:contains(That user name)", "That user name has already been taken.", "left", errors);
                 }
             });
@@ -117,7 +121,7 @@ $(document).ready(function() {
                 }
                 enable_elements();
             } else {
-                sp_fb.child(user_name.toLowerCase()).set({
+                sp_fb_accounts.child(user_name.toLowerCase()).set({
                     email: email,
                     newsletter: newsletter,
                     password: password,
@@ -154,7 +158,7 @@ $(document).ready(function() {
                 }
                 enable_elements();
             } else {
-                sp_fb.once("value", function(dataSnapshot) {
+                sp_fb_accounts.once("value", function(dataSnapshot) {
                     dataSnapshot.forEach(function(childSnapshot) {
                         if (log_id !== childSnapshot.child("email").val() && log_id !== childSnapshot.child("user_name").val()) {
                             pop_set("#log_id", ".popover:contains(ID)", "Invalid log in ID.", "right", errors);
@@ -179,7 +183,13 @@ $(document).ready(function() {
                             }
                             enable_elements();
                         } else {
-                            alert("Woot");
+                            sp_fb_data.auth(token, function(error) {
+                                if(error) {
+                                    console.log("Login Failed!", error);
+                                } else {
+                                    console.log("Login Succeeded!");
+                                }
+                            });
                             enable_elements();
                         }
                     }, 200);
