@@ -48,8 +48,7 @@ input[type="checkbox"] {
 }
 
 #primary_ad {
-    background-image: url("../images/primary_ad.jpg");
-    background-color: black;
+    background: black url("../images/primary_ad.jpg");
     height: 550px;
     margin: 0 auto;
 }
@@ -121,7 +120,7 @@ input[type="checkbox"] {
 }
 
 #locations h3 {
-    font-family: "museo-sans";
+    font-family: "museo-sans", Sans-Serif;
 }
 
 #top_row {
@@ -181,7 +180,7 @@ input[type="checkbox"] {
 }
 
 .option_desc h3 {
-    font-family: "museo-sans";
+    font-family: "museo-sans", Sans-Serif;
 }
 
 .how_to_header_line {
@@ -201,7 +200,7 @@ input[type="checkbox"] {
 }
 
 #how_to_header h2 {
-    font-family: "museo-sans";
+    font-family: "museo-sans", Sans-Serif;
 }
 
 #left_hdr_line {
@@ -250,7 +249,7 @@ input[type="checkbox"] {
 }
 
 #video_header h2 {
-    font-family: "museo-sans";
+    font-family: "museo-sans", Sans-Serif;
 }
 
 #left_video_line {
@@ -297,7 +296,7 @@ input[type="checkbox"] {
 
 .customer_text h5 {
     margin: 0;
-    font-family: "museo-sans";
+    font-family: "museo-sans", Sans-Serif;
     font-weight: 600;
 }
 
@@ -332,7 +331,7 @@ input[type="checkbox"] {
     width: 1000px;
 }
 
-#stars {
+.stars {
     margin-bottom: 8px;
 }
 
@@ -412,7 +411,7 @@ input[type="checkbox"] {
     height: 25px;
     border-bottom: 1px solid #00E6E6;
     padding: 0;
-    font-family: "museo-sans";
+    font-family: "museo-sans", Sans-Serif;
     font-weight: 600;
 }
 
@@ -484,7 +483,7 @@ input[type="checkbox"] {
     border-top: 1px solid #E6E6E6;
 }
 
-#top_row {
+#top_footer {
     height: 20px;
     margin-top: 25px;
 }
