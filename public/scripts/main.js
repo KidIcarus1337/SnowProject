@@ -65,10 +65,6 @@ $(document).ready(function() {
     });
     
     var fb_accounts = new Firebase("https://snow-project.firebaseio.com/accounts/");
-    /*var FirebaseTokenGenerator = require("firebase-token-generator");
-    var tokenGenerator = new FirebaseTokenGenerator("9JCywOK5CIZaidL7pb1QjpHPMtTcnudG0NSYqdCD");
-    var token = tokenGenerator.createToken({we: "will", rock: "you"});
-    var fb_data = new Firebase("https://snow-project.firebaseio.com/");*/
     
     $("#sign_up_button").click(function() {
         disable_elements();
@@ -183,9 +179,6 @@ $(document).ready(function() {
                             }
                             enable_elements();
                         } else {
-                            $.getJSON( "/authToken", function(token) {
-                                console.log(token);
-                            });
                             console.log("Login Succeeded!");
                             enable_elements();
                         }
