@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var fb_accounts = new Firebase("https://snow-project.firebaseio.com/accounts/");
+
     function pop_set(element_target, pop_target, pop_content, direction, errors) {
         $(element_target).popover({
             container: "body",
@@ -21,13 +23,17 @@ $(document).ready(function() {
         $(".pop_target").prop("disabled", true);
         $(".checkbox_container").prop("disabled", true);
     }
-    
+
     function enable_elements() {
         $(".form_button").prop("disabled", false);
         $(".pop_target").prop("disabled", false);
         $(".checkbox_container").prop("disabled", false);
     }
-    
+
+    function toTitleCase(str) {
+        return str.replace(/\w*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    }
+
     $(".carousel").carousel({
         interval: 10000
     });
@@ -47,12 +53,16 @@ $(document).ready(function() {
     });
     
     $(".social_link").tooltip();
-    
-    $(".log_section button, #overlay_button").mousedown(function() {
+
+    $(".overlay_button").hover(function() {
+        $(this).css({"color":"#00E6E6"});
+    })
+
+    $(".log_section button, .overlay_button, #post_button").mousedown(function() {
         $(this).css({"background-color":"#CCCCCC", "border-color":"#00A1A1","color":"#00A1A1"});
     });
     
-    $(".log_section button, #overlay_button").on("mouseup mouseleave", function() {
+    $(".log_section button, .overlay_button, #post_button").on("mouseup mouseleave", function() {
         $(this).css({"background-color":"#FFF", "border-color":"#00E6E6","color":"#00E6E6"});
     });
     
@@ -64,8 +74,6 @@ $(document).ready(function() {
         $("#shoveler_container").popover("destroy");
     });
     
-    var fb_accounts = new Firebase("https://snow-project.firebaseio.com/accounts/");
-    
     $("#sign_up_button").click(function() {
         disable_elements();
         $(".pop_target").each(function() {
@@ -73,13 +81,13 @@ $(document).ready(function() {
         });
         
         var errors = [];
-        var email = $("#email").val();
-        var user_name = $("#user_name").val();
-        var password = $("#password").val();
-        var rp_password = $("#rp_password").val();
-        var shoveler = $("#shoveler_box").is(":checked");
-        var poster = $("#poster_box").is(":checked");
-        var newsletter = $("#newsletter_box").is(":checked");
+        var email = $("#email").val(),
+            user_name = $("#user_name").val(),
+            password = $("#password").val(),
+            rp_password = $("#rp_password").val(),
+            shoveler = $("#shoveler_box").is(":checked"),
+            poster = $("#poster_box").is(":checked"),
+            newsletter = $("#newsletter_box").is(":checked");
         
         if (email === "") {
             pop_set("#email", ".popover:contains(email)", "Please provide an email address.", "left", errors);
@@ -137,9 +145,9 @@ $(document).ready(function() {
             $(this).popover("destroy");
         });
         var errors = [];
-        var log_id = $("#log_id").val();
-        var log_password = $("#log_password").val();
-        var remember_me = $("#remember_me_box").is(":checked");
+        var log_id = $("#log_id").val(),
+            log_password = $("#log_password").val(),
+            remember_me = $("#remember_me_box").is(":checked");
         
         if (log_id === "") {
             pop_set("#log_id", ".popover:contains(name or email)", "Please enter your user name or email.", "right", errors);
@@ -179,11 +187,86 @@ $(document).ready(function() {
                             }
                             enable_elements();
                         } else {
-                            console.log("Login Succeeded!");
+                            alert("woot");
                             enable_elements();
                         }
                     }, 200);
                 });
+            }
+        }, 200);
+    });
+
+    $.getScript("scripts/autoNumeric.js", function() {
+        $("#pay").autoNumeric("init");
+    });
+
+    $("#post_button").click(function() {
+        disable_elements();
+        $(".pop_target").each(function() {
+            $(this).popover("destroy");
+        });
+        var errors = [];
+        var first_name = $("#first_name").val(),
+            last_name = $("#last_name").val(),
+            country = $("#country").val(),
+            city = $("#city").val(),
+            street = toTitleCase(($("#street").val().toLowerCase()).replace(/_/g, " ").replace(/\./g, "").replace(/street/g, "st").replace(/drive/, "dr").replace(/lane/, "ln")),
+            phone = $("#phone").val(),
+            email = $("#email").val(),
+            zip_code = $("#zip").val(),
+            pay = "$" + $("#pay").val();
+        if (first_name === "") {
+            pop_set("#first_name", ".popover:contains(first name)", "Please provide your first name.", "left", errors);
+        }
+        if (last_name === "") {
+            pop_set("#last_name", ".popover:contains(last name)", "Please provide your last name.", "left", errors);
+        }
+        if (street === "") {
+            pop_set("#street", ".popover:contains(street)", "Please provide the street address of the job location.", "left", errors);
+        }
+        if (phone === "") {
+            pop_set("#phone", ".popover:contains(phone)", "Please provide a phone number.", "left", errors);
+        }
+        if (email === "") {
+            pop_set("#email", ".popover:contains(email)", "Please provide an email address.", "left", errors);
+        } else if (email.indexOf("@") === -1) {
+            pop_set("#email", ".popover:contains(Invalid email)", "Invalid email address.", "left", errors);
+        }
+        if (zip_code === "") {
+            pop_set("#zip", ".popover:contains(the zip code)", "Please provide the zip code of the job location.", "left", errors);
+        } else if (isNaN(zip_code)) {
+            pop_set("#zip", ".popover:contains(Invalid zip)", "Invalid zip code.", "left", errors);
+        }
+        if (pay === "$") {
+            pop_set("#pay", ".popover:contains(pay)", "Please specify the amount of pay offered for the job.", "left", errors);
+        }
+        var fb_current_jobs = new Firebase("https://snow-project.firebaseio.com/current_jobs/" + city);
+        fb_current_jobs.once("value", function(dataSnapshot) {
+            dataSnapshot.forEach(function(childSnapshot) {
+                if (street === (childSnapshot.child("street").val())) {
+                    pop_set("#street", ".popover:contains(That location)", "That location already has a post active.", "left", errors);
+                }
+            });
+        });
+        setTimeout(function() {
+            if (errors.length > 0) {
+                for (var each in errors) {
+                    $(errors[each]).popover("show");
+                }
+                enable_elements();
+            } else {
+                fb_current_jobs.child(street.replace(/ /g, "_")).set({
+                    complete_date: "none",
+                    pay: pay,
+                    post_date: new Date().toString(),
+                    poster: first_name + " " + last_name,
+                    shoveler: "none",
+                    shoveler_accept_date: "none",
+                    street: street,
+                    zip_code: zip_code
+                });
+                alert("woot");
+                enable_elements();
             }
         }, 200);
     });

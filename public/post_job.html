@@ -22,25 +22,32 @@
                 <li><a href="login">LOG IN</a></li>
             </ul>
         </nav>
-        <div class="container" id="contact_page_container">
-            <h2>Snow Project's Creators Are</h2>
-            <div class="contact_container" id="caleb_container">
-                <img src="images/caleb.png" />
-                <h3>Caleb Madrigal</h3>
-                <h5>Conception & Inspiration</h5>
-                <ul>
-                    <li>Contact - N/A</li>
-                    <li>About - Good programmer he is. Nnyegh hegh hegh!</li>
-                </ul>
-            </div>
-            <div class="contact_container" id="jared_container">
-                <img src="images/jared.png" />
-                <h3>Jared Sasser</h3>
-                <h5>Web Developer & Designer</h5>
-                <ul>
-                    <li>Contact - N/A</li>
-                    <li>About - Favorite food is broccoli and cheese fondue</li>
-                </ul>
+        <div class="container" id="post_page_sect">
+            <h2>Post Form</h2>
+            <div class="container" id="post_container">
+                <div class="container" id="post_sub_container">
+                    <input type="text" class="pop_target" id="first_name" name="first_name" placeholder="First Name" />
+                    <input type="text" class="pop_target" id="last_name" name="last_name" placeholder="Last Name" />
+                    <select class="pop_target" id="country" name="country">
+                        <option value="United States">United States</option>
+                    </select>
+                    <select class="pop_target" id="city" name="city">
+                        <option value="Appleton_WI">Appleton, WI</option>
+                        <option value="Milwaukee_WI">Milwaukee, WI</option>
+                        <option value="Red_Bud_IL">Red Bud, IL</option>
+                    </select>
+                    <input type="text" class="pop_target" id="street" name="street" placeholder="Address" />
+                    <input type="text" class="pop_target" id="phone" name="phone" placeholder="Phone" />
+                    <span>Example: 111-222-1337</span>
+                    <input type="email" class="pop_target" id="email" name="email" placeholder="Email" />
+                    <span>Example: fake_email42@example.com</span>
+                    <input type="text" class="pop_target" id="zip" name="zip" placeholder="Zip Code" />
+                    <div id="pay_container">
+                        <input type="text" class="pop_target" id="pay" name="pay" placeholder="Pay" />
+                        <span>$</span>
+                    </div>
+                </div>
+                <button class="form_button" id="post_button">POST</button>
             </div>
         </div>
         <div id="social_links">
@@ -58,7 +65,7 @@
                     <li><a href="help">Help</a></li>
                 </ul>
                 <ul class="list-inline footer_list" id="right_footer">
-                    <li><span>Contact</span></li>
+                    <li><a href="contact">Contact</a></li>
                     <li><a href="about">About</a></li>
                 </ul>
                 <span class="glyphicon glyphicon-asterisk" id="footer_divider"></span>
