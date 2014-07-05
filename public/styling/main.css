@@ -162,14 +162,14 @@ input[type="checkbox"] {
 /*----------------------------------------How To----------------------------------------*/
 .option_ad {
     height: 450px;
-    width: 600px;
+    width: 100%;
     padding-top: 190px;
 	color: white;
 	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
 }
 
 .how_to_option {
-    width: 600px;
+    width: 45%;
 }
 
 .option_header {
@@ -184,32 +184,39 @@ input[type="checkbox"] {
     font-family: "museo-sans", Sans-Serif;
 }
 
-.how_to_header_line {
-    width: 500px;
-    margin: 15px 0 15px 0;
-    border-bottom: 3px solid #CFCFCF
+.header_line {
+    display: inline-block;
+    position: absolute;
+    height: 3px;
+    width: 30%;
+    margin-top: -1.5px;
+    background-color: #CFCFCF;
+    top: 50%;
 }
 
 #how_to_section {
     margin-top: 40px;
     text-align: center;
-    width: 1400px;
+    width: 90%;
 }
 
 #how_to_header {
-    margin-bottom: 20px;
+    position: relative;
+    margin: 20px 0;
 }
 
 #how_to_header h2 {
+    display: inline-block;
+    margin: 0;
     font-family: "museo-sans", Sans-Serif;
 }
 
-#left_hdr_line {
-    float: left;
+.left_hdr_line {
+    left: 50px;
 }
 
-#right_hdr_line {
-    float: right;
+.right_hdr_line {
+    right: 50px;
 }
 
 #shoveler_option {
@@ -234,33 +241,19 @@ input[type="checkbox"] {
 }
 
 /*----------------------------------------Video----------------------------------------*/
-.video_header_line {
-    width: 300px;
-    margin: 15px 0 15px 0;
-    border-bottom: 3px solid #CFCFCF
-}
-
 #video_section {
     width: 1170px;
 }
 
 #video_header {
+    position: relative;
     margin: 60px 0 20px 0;
     text-align: center;
 }
 
 #video_header h2 {
+    margin: 0;
     font-family: "museo-sans", Sans-Serif;
-}
-
-#left_video_line {
-    float: left;
-    margin-left: 120px;
-}
-
-#right_video_line {
-    float: right;
-    margin-right: 120px;
 }
 
 #video_wrapper {
@@ -499,6 +492,7 @@ input[type="checkbox"] {
 
 #post_sub_container {
     width: 1170px;
+    max-width: 100%;
     position: relative;
     padding: 0 0 0 410px;
 }
