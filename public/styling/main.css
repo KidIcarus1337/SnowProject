@@ -162,14 +162,14 @@ input[type="checkbox"] {
 /*----------------------------------------How To----------------------------------------*/
 .option_ad {
     height: 450px;
-    width: 100%;
+    width: 600px;
     padding-top: 190px;
 	color: white;
 	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
 }
 
 .how_to_option {
-    width: 45%;
+    width: 600px;
 }
 
 .option_header {
@@ -197,7 +197,7 @@ input[type="checkbox"] {
 #how_to_section {
     margin-top: 40px;
     text-align: center;
-    width: 90%;
+    width: 1400px;
 }
 
 #how_to_header {
