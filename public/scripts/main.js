@@ -1,5 +1,35 @@
-$(document).ready(function() {
-    var fb_accounts = new Firebase("https://snow-project.firebaseio.com/accounts/");
+function doLogout() {
+    $.ajax({
+        url: "/logout",
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (response) {
+            window.location.href = "/";
+        },
+        error: function (xhr, status, error) {
+            var errorJson = $.parseJSON(xhr.responseText);
+            alert("Error: " + errorJson['message']);
+        }
+    });
+}
+
+$(function() {
+    function checkSessionInfo() {
+        $.ajax({
+            url: "/session_info",
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                $("#log_in_section").html("<li>Welcome, " + response.first_name + "<button type='button' class='btn btn-link' onclick='doLogout()'> - LOGOUT</div></li>");
+            },
+            error: function (xhr, status, error) {
+                $("#log_in_section").html("<li><a href='login'>LOG IN</a></li>");
+            }
+        });
+    }
+    checkSessionInfo();
 
     function pop_set(element_target, pop_target, pop_content, direction, errors) {
         $(element_target).popover({
@@ -73,7 +103,7 @@ $(document).ready(function() {
     $("#shoveler_box, #poster_box").on("focus changed", function() {
         $("#shoveler_container").popover("destroy");
     });
-    
+
     $("#sign_up_button").click(function() {
         disable_elements();
         $(".pop_target").each(function() {
@@ -108,7 +138,18 @@ $(document).ready(function() {
         if (shoveler === false && poster === false) {
             pop_set("#shoveler_container", ".popover:contains(role)", "Please choose at least one role.", "left", errors);
         }
-        fb_accounts.once("value", function(dataSnapshot) {
+        $.ajax({
+            url: "/name",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ "name": name }),
+            success: function (response) {
+                var name = response['name'];
+                updateUI(name);
+            }
+        });
+        /*fb_accounts.once("value", function(dataSnapshot) {
             dataSnapshot.forEach(function(childSnapshot) {
                 if (email.toLowerCase() === (childSnapshot.child("email").val()).toLowerCase()) {
                     pop_set("#email", ".popover:contains(That email)", "That email address has already been registered.", "left", errors);
@@ -117,7 +158,7 @@ $(document).ready(function() {
                     pop_set("#user_name", ".popover:contains(That user name)", "That user name has already been taken.", "left", errors);
                 }
             });
-        });
+        });*/
         setTimeout(function() {
             if (errors.length > 0) {
                 for (var each in errors) {
@@ -125,7 +166,7 @@ $(document).ready(function() {
                 }
                 enable_elements();
             } else {
-                fb_accounts.child(user_name.toLowerCase()).set({
+                /*fb_accounts.child(user_name.toLowerCase()).set({
                     email: email,
                     newsletter: newsletter,
                     password: password,
@@ -134,7 +175,7 @@ $(document).ready(function() {
                     user_name: user_name
                 });
                 alert("woot");
-                enable_elements();
+                enable_elements();*/
             }
         }, 200);
     });
@@ -145,14 +186,14 @@ $(document).ready(function() {
             $(this).popover("destroy");
         });
         var errors = [];
-        var log_id = $("#log_id").val(),
-            log_password = $("#log_password").val(),
+        var login_id = $("#log_id").val(),
+            login_password = $("#log_password").val(),
             remember_me = $("#remember_me_box").is(":checked");
         
-        if (log_id === "") {
+        if (login_id === "") {
             pop_set("#log_id", ".popover:contains(name or email)", "Please enter your user name or email.", "right", errors);
         }
-        if (log_password === "") {
+        if (login_password === "") {
             pop_set("#log_password", ".popover:contains(your password)", "Please enter your password.", "right", errors);
         }
         setTimeout(function() {
@@ -162,7 +203,22 @@ $(document).ready(function() {
                 }
                 enable_elements();
             } else {
-                fb_accounts.once("value", function(dataSnapshot) {
+                $.ajax({
+                    url: "/check_login",
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({"login_id": login_id, "login_password": login_password}),
+                    success: function (response) {
+                        window.location.href = "/";
+                    },
+                    error: function (xhr, status, error) {
+                        var errorJson = $.parseJSON(xhr.responseText);
+                        alert("Error: " + errorJson['message']);
+                    }
+                });
+                enable_elements();
+                /*fb_accounts.once("value", function(dataSnapshot) {
                     dataSnapshot.forEach(function(childSnapshot) {
                         if (log_id !== childSnapshot.child("email").val() && log_id !== childSnapshot.child("user_name").val()) {
                             pop_set("#log_id", ".popover:contains(ID)", "Invalid log in ID.", "right", errors);
@@ -191,7 +247,7 @@ $(document).ready(function() {
                             enable_elements();
                         }
                     }, 200);
-                });
+                });*/
             }
         }, 200);
     });
