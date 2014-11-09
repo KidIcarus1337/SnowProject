@@ -22,7 +22,8 @@ $(function() {
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (response) {
-                $("#log_in_section").html("<li>Welcome, " + response.first_name + "<button type='button' class='btn btn-link' onclick='doLogout()'> - LOGOUT</div></li>");
+                $("#log_in_section").html("<li>Welcome, " + response.first_name +
+                    "<button type='button' class='btn btn-link' onclick='doLogout()'> - LOGOUT</div></li>");
             },
             error: function (xhr, status, error) {
                 $("#log_in_section").html("<li><a href='login'>LOG IN</a></li>");
@@ -104,7 +105,7 @@ $(function() {
         $("#shoveler_container").popover("destroy");
     });
 
-    $("#sign_up_button").click(function() {
+    function signUp() {
         disable_elements();
         $(".pop_target").each(function() {
             $(this).popover("destroy");
@@ -178,9 +179,9 @@ $(function() {
                 enable_elements();*/
             }
         }, 200);
-    });
-    
-    $("#log_in_button").click(function() {
+    }
+
+    function login() {
         disable_elements();
         $(".pop_target").each(function() {
             $(this).popover("destroy");
@@ -189,7 +190,7 @@ $(function() {
         var login_id = $("#log_id").val(),
             login_password = $("#log_password").val(),
             remember_me = $("#remember_me_box").is(":checked");
-        
+
         if (login_id === "") {
             pop_set("#log_id", ".popover:contains(name or email)", "Please enter your user name or email.", "right", errors);
         }
@@ -210,46 +211,52 @@ $(function() {
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify({"login_id": login_id, "login_password": login_password}),
                     success: function (response) {
-                        window.location.href = "/";
+                        setTimeout(function() {
+                            window.location.href = "/";
+                        }, 5000);
                     },
                     error: function (xhr, status, error) {
                         var errorJson = $.parseJSON(xhr.responseText);
-                        alert("Error: " + errorJson['message']);
-                    }
-                });
-                enable_elements();
-                /*fb_accounts.once("value", function(dataSnapshot) {
-                    dataSnapshot.forEach(function(childSnapshot) {
-                        if (log_id !== childSnapshot.child("email").val() && log_id !== childSnapshot.child("user_name").val()) {
-                            pop_set("#log_id", ".popover:contains(ID)", "Invalid log in ID.", "right", errors);
+                        if (errorJson["message"] === "Invalid ID") {
+                            pop_set("#log_id", ".popover:contains(ID)", "Invalid login ID.", "right", errors);
                         } else {
-                            for (var i = errors.length - 1; i >=0; i--) {
+                            for (var i = errors.length - 1; i >= 0; i--) {
                                 if (errors[i] === "#log_id") {
                                     errors.splice(i, 1);
                                 }
                             }
-                            if (log_password !== childSnapshot.child("password").val()) {
+                            if (errorJson["message"] === "Invalid password") {
                                 pop_set("#log_password", ".popover:contains(Invalid password)", "Invalid password.", "right", errors);
-                                return true;
-                            } else {
-                                return true;
                             }
                         }
-                    });
-                    setTimeout(function() {
-                        if (errors.length > 0) {
-                            for (var each in errors) {
-                                $(errors[each]).popover("show");
-                            }
-                            enable_elements();
-                        } else {
-                            alert("woot");
-                            enable_elements();
+                    }
+                });
+                setTimeout(function() {
+                    if (errors.length > 0) {
+                        for (var each in errors) {
+                            $(errors[each]).popover("show");
                         }
-                    }, 200);
-                });*/
+                        enable_elements();
+                    }
+                }, 200);
             }
         }, 200);
+    }
+
+    $("#log_in_button").click(login);
+
+    $("#log_in_form > input").keypress(function(e) {
+        if (e.which === 13) {
+            login();
+        }
+    });
+
+    $("#sign_up_button").click(signUp);
+
+    $("#sign_up_form > input").keypress(function(e) {
+        if (e.which === 13) {
+            signUp();
+        }
     });
 
     $.getScript("scripts/autoNumeric.js", function() {
@@ -296,14 +303,14 @@ $(function() {
         if (pay === "$") {
             pop_set("#pay", ".popover:contains(pay)", "Please specify the amount of pay offered for the job.", "left", errors);
         }
-        var fb_current_jobs = new Firebase("https://snow-project.firebaseio.com/current_jobs/" + city);
+        /*var fb_current_jobs = new Firebase("https://snow-project.firebaseio.com/current_jobs/" + city);
         fb_current_jobs.once("value", function(dataSnapshot) {
             dataSnapshot.forEach(function(childSnapshot) {
                 if (street === (childSnapshot.child("street").val())) {
                     pop_set("#street", ".popover:contains(That location)", "That location already has a post active.", "left", errors);
                 }
             });
-        });
+        });*/
         setTimeout(function() {
             if (errors.length > 0) {
                 for (var each in errors) {
@@ -311,7 +318,7 @@ $(function() {
                 }
                 enable_elements();
             } else {
-                fb_current_jobs.child(street.replace(/ /g, "_")).set({
+                /*fb_current_jobs.child(street.replace(/ /g, "_")).set({
                     complete_date: "none",
                     pay: pay,
                     post_date: new Date().toString(),
@@ -322,7 +329,7 @@ $(function() {
                     zip_code: zip_code
                 });
                 alert("woot");
-                enable_elements();
+                enable_elements();*/
             }
         }, 200);
     });

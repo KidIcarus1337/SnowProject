@@ -32,29 +32,42 @@ function setName(req, res) {
     }
 }
 
-function checkLogin(login_id, login_password) {
-    if (login_id == 'jared' && login_password == 'sasser') {
-       return {first_name: "Jared", username: "Motrax"};
-    }
-    else {
-       return null;
-    }
+function checkLogin(login_id, login_password, callback) {
+    console.log("Login id: " + login_id);
+    fb_accounts.once("value", function(dataSnapshot) {
+        dataSnapshot.forEach(function (childSnapshot) {
+            if (login_id !== childSnapshot.child("email").val() && login_id !== childSnapshot.child("username").val()) {
+                callback({message: 'Invalid ID'}, null);
+            } else {
+                if (login_password !== childSnapshot.child("password").val()) {
+                    callback({message: 'Invalid password'}, null);
+                } else {
+                    callback(null,
+                           {email: childSnapshot.child("email").val(),
+                            first_name: childSnapshot.child("first_name").val(),
+                            last_name: childSnapshot.child("last_name").val(),
+                            username: childSnapshot.child("username").val(),
+                            password: childSnapshot.child("password").val(),
+                            phone: childSnapshot.child("phone").val(),
+                            poster: childSnapshot.child("poster").val(),
+                            shoveler: childSnapshot.child("shoveler").val(),
+                            newsletter: childSnapshot.child("newsletter").val()});
+                }
+            }
+        });
+    });
 }
 
 function login(req, res) {
-    if (!req.body.hasOwnProperty('login_id') || !req.body.hasOwnProperty('login_password')) {
-        return res.json(400, { message: 'Missing username or password' });
-    }
-    else {
-        var loginResult = checkLogin(req.body.login_id, req.body.login_password);
-        if (loginResult) {
-            req.session = loginResult;
-            return res.json(loginResult);
-        }
+    checkLogin(req.body.login_id, req.body.login_password, function (err, loginResult) {
+        if (err) {
+            return res.json(300, err);
+            }
         else {
-            return res.json(300, { message: 'Invalid username or password' });
+            req.session = loginResult;
+            return res.json({});
         }
-    }
+    });
 }
 
 function logout(req, res) {
@@ -67,7 +80,7 @@ function getSessionInfo(req, res) {
     if (req.session !== null && "first_name" in req.session) {
         return res.json(req.session);
     } else {
-        return res.json(400, {message: ""});
+        return res.json(300, {message: ""});
     }
 }
 
