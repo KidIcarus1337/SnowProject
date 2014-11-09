@@ -211,9 +211,7 @@ $(function() {
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify({"login_id": login_id, "login_password": login_password}),
                     success: function (response) {
-                        setTimeout(function() {
-                            window.location.href = "/";
-                        }, 5000);
+                        location.reload();
                     },
                     error: function (xhr, status, error) {
                         var errorJson = $.parseJSON(xhr.responseText);

@@ -33,7 +33,6 @@ function setName(req, res) {
 }
 
 function checkLogin(login_id, login_password, callback) {
-    console.log("Login id: " + login_id);
     fb_accounts.once("value", function(dataSnapshot) {
         dataSnapshot.forEach(function (childSnapshot) {
             if (login_id !== childSnapshot.child("email").val() && login_id !== childSnapshot.child("username").val()) {

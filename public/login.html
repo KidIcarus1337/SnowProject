@@ -11,6 +11,19 @@
         <link type="text/css" rel="stylesheet" href="styling/main.css" />
         <script src="scripts/bootstrap.min.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
+        <script>
+            $.ajax({
+                url: "/session_info",
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    window.location.href = "/";
+                },
+                error: function (xhr, status, error) {
+                }
+            });
+        </script>
     </head>
     <body>
         <div class="container" id="log_in">
